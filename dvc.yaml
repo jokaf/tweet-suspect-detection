@@ -1,0 +1,44 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - src/preprocess.py
+      - src/text_cleaning.py
+      - data/raw/tweets_suspect.csv
+    params:
+      - preprocess.test_size
+      - preprocess.random_state
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
+
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - data/processed/train.csv
+    params:
+      - train.model
+      - train.max_features
+      - train.ngram_max
+      - train.imbalance_strategy
+      - train.random_state
+    outs:
+      - models/vectorizer.joblib
+      - models/model.joblib
+
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - data/processed/test.csv
+      - models/vectorizer.joblib
+      - models/model.joblib
+    metrics:
+      - metrics/metrics.json:
+          cache: false
+    plots:
+      - metrics/confusion_matrix.png:
+          cache: true
+      - metrics/roc_curve.png:
+          cache: true

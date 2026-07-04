@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# secrets / local config
+.env
+
+# notes personnelles de suivi, pas un livrable
+TODO.md
+notebooks/01_eda.py
