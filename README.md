@@ -19,25 +19,18 @@ Le fichier brut est versionne avec **DVC** et n'est pas stocke directement dans 
 
 ## Structure du projet
 
-```
-tweet-suspect-detection/
-├── data/
-│   ├── raw/           tweets bruts (suivi par DVC)
-│   └── processed/     donnees nettoyees, sorties du pipeline
-├── notebooks/
-│   └── 01_eda.ipynb   exploration des donnees et prise en main du nettoyage
-├── src/
-│   ├── text_cleaning.py   fonctions de nettoyage du texte
-│   ├── preprocess.py      etape 1 du pipeline DVC
-│   ├── train.py           etape 2 du pipeline DVC
-│   └── evaluate.py        etape 3 du pipeline DVC
-├── models/            modele et vectoriseur entraines (sortie du pipeline)
-├── metrics/            metriques et graphiques d'evaluation (sortie du pipeline)
-├── reports/figures/    graphiques produits dans le notebook d'exploration
-├── app/                application de deploiement (Streamlit)
-├── params.yaml         parametres du pipeline
-└── dvc.yaml            definition du pipeline DVC
-```
+Rapide description des dossiers :
+
+- `data/raw` : les tweets bruts, suivis par DVC
+- `data/processed` : les donnees nettoyees, generees par le pipeline
+- `notebooks/01_eda.ipynb` : exploration des donnees et nettoyage du texte
+- `notebooks/02_modeles.ipynb` : representation TF-IDF, comparaison des modeles, evaluation
+- `src/` : les scripts du pipeline (text_cleaning.py, preprocess.py, train.py, evaluate.py)
+- `models/` : le modele et le vectoriseur entraines, generes par le pipeline
+- `metrics/` : les metriques et graphiques d'evaluation, generes par le pipeline
+- `reports/figures` : les graphiques du notebook d'exploration
+- `app/` : l'application de deploiement (Streamlit)
+- `params.yaml` et `dvc.yaml` : la config et la definition du pipeline DVC
 
 ## Installation
 
@@ -82,3 +75,16 @@ streamlit run app/streamlit_app.py
 ## Rapport
 
 Le rapport complet (methodologie, resultats, discussion) se trouve dans `reports/`.
+
+## Ou trouver quoi par rapport au sujet
+
+Pour aider a s'y retrouver vu que le sujet a plusieurs parties :
+
+- Partie 1 (exploration et pretraitement) -> `notebooks/01_eda.ipynb`
+- Partie 2 (DVC) -> `dvc.yaml`, `.dvc/`, `params.yaml`, dossier `data/`
+- Partie 3 (representation) -> `notebooks/02_modeles.ipynb` et `src/train.py`
+- Partie 4 (comparaison des modeles) -> `notebooks/02_modeles.ipynb`
+- Partie 5 (validation) -> `notebooks/02_modeles.ipynb` et `src/preprocess.py`
+- Partie 6 (evaluation et optimisation) -> `notebooks/02_modeles.ipynb`, `src/evaluate.py`, dossier `metrics/`
+- Partie 7 (deploiement) -> `app/streamlit_app.py`
+- Partie 8 (documentation) -> ce README et le rapport dans `reports/`
