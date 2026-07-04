@@ -10,3 +10,4 @@ __pycache__/
 # notes personnelles de suivi, pas un livrable
 TODO.md
 notebooks/01_eda.py
+notebooks/02_modeles.py
