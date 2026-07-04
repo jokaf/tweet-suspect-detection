@@ -42,6 +42,13 @@ source .venv/Scripts/activate   # Windows
 uv pip install -r requirements.txt
 ```
 
+Il faut aussi telecharger les donnees NLTK utilisees pour le nettoyage du texte
+(stop words et lemmatisation), sinon le pretraitement plante :
+
+```bash
+python -c "import nltk; nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('omw-1.4')"
+```
+
 ## Recuperer les donnees et reproduire le pipeline
 
 ```bash
@@ -71,6 +78,16 @@ modele avec la probabilite associee :
 ```bash
 streamlit run app/streamlit_app.py
 ```
+
+## Resultats
+
+Trois modeles ont ete compares (Logistic Regression, Random Forest, Naive Bayes)
+avec du TF-IDF et une gestion du desequilibre par class weight. Random Forest
+donne le meilleur resultat global, avec une accuracy autour de 0.98 et un
+F1-score autour de 0.99. Naive Bayes a un tres bon recall (il detecte presque
+tous les tweets suspects) mais une precision plus faible, ce qui veut dire
+qu'il se trompe plus souvent en signalant des tweets normaux comme suspects.
+Le detail des metriques se trouve dans `notebooks/02_modeles.ipynb`.
 
 ## Rapport
 
