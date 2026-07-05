@@ -5,6 +5,7 @@ __pycache__/
 .DS_Store
 mlruns/
 mlflow.db
+~$*.docx
 
 # secrets / local config
 .env
