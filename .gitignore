@@ -9,10 +9,3 @@ mlflow.db
 
 # secrets / local config
 .env
-
-# notes personnelles de suivi, pas un livrable
-TODO.md
-notebooks/01_eda.py
-notebooks/02_modeles.py
-reports/gen_rapport.js
-reports/rapport.md
