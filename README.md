@@ -29,6 +29,8 @@ Rapide description des dossiers :
 - `models/` : le modèle et le vectoriseur entraînés, générés par le pipeline
 - `metrics/` : les métriques et graphiques d'évaluation, générés par le pipeline
 - `reports/figures` : les graphiques du notebook d'exploration
+- `reports/captures` : les captures d'écran demandées par le sujet
+- `reports/rapport.pdf` : le rapport final
 - `app/` : l'application de déploiement (Streamlit)
 - `params.yaml` et `dvc.yaml` : la config et la définition du pipeline DVC
 
@@ -91,7 +93,8 @@ Le détail des métriques se trouve dans `notebooks/02_modeles.ipynb`.
 
 ## Rapport
 
-Le rapport complet (méthodologie, résultats, discussion) se trouve dans `reports/`.
+Le rapport complet (méthodologie, résultats, discussion) se trouve dans
+`reports/rapport.pdf`, avec les captures d'écran dans `reports/captures/`.
 
 ## Où trouver quoi par rapport au sujet
 
