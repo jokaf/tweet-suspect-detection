@@ -49,7 +49,12 @@ if model_name == "logistic_regression":
 elif model_name == "naive_bayes":
     model = MultinomialNB()
 elif model_name == "random_forest":
-    model = RandomForestClassifier(n_estimators=200, class_weight=class_weight, random_state=params["random_state"])
+    model = RandomForestClassifier(
+        n_estimators=params["n_estimators"],
+        max_depth=params["max_depth"],
+        class_weight=class_weight,
+        random_state=params["random_state"],
+    )
 else:
     raise ValueError("modele inconnu dans params.yaml : " + model_name)
 

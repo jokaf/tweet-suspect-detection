@@ -3,11 +3,13 @@ preprocess:
   random_state: 42
 
 train:
-  model: logistic_regression   # logistic_regression | naive_bayes | random_forest
+  model: random_forest   # logistic_regression | naive_bayes | random_forest
   max_features: 20000
   ngram_max: 2
   imbalance_strategy: class_weight   # class_weight | smote | none
   random_state: 42
+  n_estimators: 200   # trouve par GridSearchCV, partie 6
+  max_depth: null   # trouve par GridSearchCV, partie 6 (null = profondeur illimitee)
 
 evaluate:
   cv_folds: 5

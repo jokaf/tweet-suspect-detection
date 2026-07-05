@@ -37,23 +37,23 @@ stages:
       size: 5737380
     - path: src/train.py
       hash: md5
-      md5: cc095b2b4d79af6df03623d8b9291ee6
-      size: 2004
+      md5: fd50576f9d47ad5d3a008fb4d7178f33
+      size: 2093
     params:
       params.yaml:
         train.imbalance_strategy: class_weight
         train.max_features: 20000
-        train.model: logistic_regression
+        train.model: random_forest
         train.ngram_max: 2
         train.random_state: 42
     outs:
     - path: models/model.joblib
       hash: md5
-      md5: a2303fce7332fc98f6f6226f078d6cfc
-      size: 160863
+      md5: 546f8cb3aa0a4599f79f38a43ca4a23e
+      size: 179257593
     - path: models/vectorizer.joblib
       hash: md5
-      md5: b8a1db6cf367146d5660cab3508e7aeb
+      md5: c214017883a832158bab781f89a2437c
       size: 768163
   evaluate:
     cmd: python src/evaluate.py
@@ -64,11 +64,11 @@ stages:
       size: 1429877
     - path: models/model.joblib
       hash: md5
-      md5: a2303fce7332fc98f6f6226f078d6cfc
-      size: 160863
+      md5: 546f8cb3aa0a4599f79f38a43ca4a23e
+      size: 179257593
     - path: models/vectorizer.joblib
       hash: md5
-      md5: b8a1db6cf367146d5660cab3508e7aeb
+      md5: c214017883a832158bab781f89a2437c
       size: 768163
     - path: src/evaluate.py
       hash: md5
@@ -77,13 +77,13 @@ stages:
     outs:
     - path: metrics/confusion_matrix.png
       hash: md5
-      md5: d59f295148352a5a5efa66fb83baad5b
-      size: 19138
+      md5: 0d8cc9c043f80c6c7da81478be676ba5
+      size: 19225
     - path: metrics/metrics.json
       hash: md5
-      md5: 343e526941d8f27669bd9d3859f9eb80
+      md5: feed14ee403fd0e60f3158dc2a6197a8
       size: 174
     - path: metrics/roc_curve.png
       hash: md5
-      md5: 3d2d3bf31452e0c99cfd038dd98a42b8
-      size: 25263
+      md5: ee25c637c6530c2820dafc3937ce708a
+      size: 25374
