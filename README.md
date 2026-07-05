@@ -81,6 +81,23 @@ modèle avec la probabilité associée :
 streamlit run app/streamlit_app.py
 ```
 
+L'application est aussi déployée sur Streamlit Community Cloud :
+https://tweet-suspect-detection-r8udgvufgsjw8mwwxwyuoz.streamlit.app/
+
+Elle contient une deuxième page "Dashboard" qui reprend les métriques, la
+distribution des classes, la matrice de confusion et la courbe ROC du modèle
+final, pour pouvoir suivre ses performances sans avoir à rouvrir les notebooks.
+
+## Suivi des expériences (MLflow)
+
+En plus du suivi avec DVC, les scripts `src/train.py` et `src/evaluate.py`
+enregistrent aussi les paramètres et métriques de chaque run avec MLflow.
+Pour consulter l'interface :
+
+```bash
+mlflow ui --backend-store-uri sqlite:///mlflow.db
+```
+
 ## Résultats
 
 Trois modèles ont été comparés (Logistic Regression, Random Forest, Naive Bayes)
