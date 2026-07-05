@@ -41,7 +41,7 @@ elif strategy == "smote":
     smote = SMOTE(random_state=params["random_state"])
     X, y = smote.fit_resample(X, y)
 
-# choix du modele selon params.yaml
+# choix du modèle selon params.yaml
 model_name = params["model"]
 
 if model_name == "logistic_regression":
@@ -56,13 +56,13 @@ elif model_name == "random_forest":
         random_state=params["random_state"],
     )
 else:
-    raise ValueError("modele inconnu dans params.yaml : " + model_name)
+    raise ValueError("modèle inconnu dans params.yaml : " + model_name)
 
 model.fit(X, y)
 
 joblib.dump(vectorizer, VECTORIZER_PATH)
 joblib.dump(model, MODEL_PATH)
 
-print("modele entraine :", model_name)
-print("strategie de reequilibrage :", strategy)
-print("nombre d'exemples utilises :", X.shape[0])
+print("modèle entraîné :", model_name)
+print("stratégie de rééquilibrage :", strategy)
+print("nombre d'exemples utilisés :", X.shape[0])

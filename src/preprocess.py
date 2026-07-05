@@ -17,13 +17,13 @@ params = yaml.safe_load(open("params.yaml"))["preprocess"]
 
 df = pd.read_csv(RAW_PATH)
 
-# on enleve les lignes vides et les doublons
+# on enlève les lignes vides et les doublons
 df = df.dropna(subset=["message", "label"])
 df = df.drop_duplicates(subset=["message"])
 
 df["clean_text"] = df["message"].apply(clean_text)
 
-# apres nettoyage, certains tweets peuvent devenir vides (ex: juste un lien)
+# après nettoyage, certains tweets peuvent devenir vides (ex: juste un lien)
 df = df[df["clean_text"].str.len() > 0]
 
 train_df, test_df = train_test_split(

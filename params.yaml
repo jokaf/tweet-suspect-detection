@@ -8,8 +8,8 @@ train:
   ngram_max: 2
   imbalance_strategy: class_weight   # class_weight | smote | none
   random_state: 42
-  n_estimators: 200   # trouve par GridSearchCV, partie 6
-  max_depth: null   # trouve par GridSearchCV, partie 6 (null = profondeur illimitee)
+  n_estimators: 200   # trouvé par GridSearchCV, partie 6
+  max_depth: null   # trouvé par GridSearchCV, partie 6 (null = profondeur illimitée)
 
 evaluate:
   cv_folds: 5

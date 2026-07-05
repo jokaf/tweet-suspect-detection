@@ -11,3 +11,5 @@ __pycache__/
 TODO.md
 notebooks/01_eda.py
 notebooks/02_modeles.py
+reports/gen_rapport.js
+reports/rapport.md
