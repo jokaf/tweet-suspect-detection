@@ -6,6 +6,7 @@ Sorties : models/vectorizer.joblib, models/model.joblib
 import yaml
 import joblib
 import pandas as pd
+import mlflow
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import MultinomialNB
@@ -16,6 +17,12 @@ VECTORIZER_PATH = "models/vectorizer.joblib"
 MODEL_PATH = "models/model.joblib"
 
 params = yaml.safe_load(open("params.yaml"))["train"]
+
+# suivi des experiences en plus de DVC (bonus)
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("tweet-suspect-detection")
+mlflow.start_run()
+mlflow.log_params(params)
 
 df = pd.read_csv(TRAIN_PATH)
 df["clean_text"] = df["clean_text"].fillna("")
@@ -62,6 +69,9 @@ model.fit(X, y)
 
 joblib.dump(vectorizer, VECTORIZER_PATH)
 joblib.dump(model, MODEL_PATH)
+
+mlflow.log_metric("nombre_exemples", X.shape[0])
+mlflow.end_run()
 
 print("modèle entraîné :", model_name)
 print("stratégie de rééquilibrage :", strategy)

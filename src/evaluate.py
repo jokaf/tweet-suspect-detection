@@ -8,6 +8,8 @@ import json
 import joblib
 import matplotlib.pyplot as plt
 import pandas as pd
+import yaml
+import mlflow
 from sklearn.metrics import (
     ConfusionMatrixDisplay,
     RocCurveDisplay,
@@ -48,6 +50,14 @@ with open(METRICS_PATH, "w") as f:
     json.dump(metrics, f, indent=2)
 
 print(metrics)
+
+# suivi des experiences en plus de DVC (bonus)
+params = yaml.safe_load(open("params.yaml"))["train"]
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
+mlflow.set_experiment("tweet-suspect-detection")
+with mlflow.start_run():
+    mlflow.log_params(params)
+    mlflow.log_metrics(metrics)
 
 # matrice de confusion
 cm = confusion_matrix(y_test, y_pred)

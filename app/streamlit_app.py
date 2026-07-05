@@ -1,7 +1,8 @@
 import sys
 import os
 
-sys.path.append(os.path.join(os.path.dirname(__file__), "..", "src"))
+APP_DIR = os.path.dirname(__file__)
+sys.path.append(os.path.join(APP_DIR, "..", "src"))
 
 import streamlit as st
 import joblib
@@ -11,8 +12,10 @@ from text_cleaning import clean_text
 st.title("Détection de tweets suspects")
 st.write("Écris un tweet ci-dessous pour savoir si le modèle le considère comme suspect.")
 
-vectorizer = joblib.load("models/vectorizer.joblib")
-model = joblib.load("models/model.joblib")
+# le modele est aussi copie ici (avec Git LFS) pour que le deploiement cloud
+# puisse le charger, vu que models/ est gere par DVC (stockage local)
+vectorizer = joblib.load(os.path.join(APP_DIR, "model", "vectorizer.joblib"))
+model = joblib.load(os.path.join(APP_DIR, "model", "model.joblib"))
 
 tweet = st.text_area("Tweet")
 
